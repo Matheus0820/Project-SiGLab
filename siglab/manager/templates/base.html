@@ -1,19 +1,76 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SigLab</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SigLab</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Icone link -->
+  <link rel="icon" href="https://static.thenounproject.com/png/302016-200.png" type="image/gif" sizes="16x16">
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary bg-dark"
+    style="max-width: 4.5rem; height: 100%; position: fixed; top: 0;">
+    <a href="#" class="d-block p-3 link-body-emphasis text-decoration-none text-body-light">
+      <span></span><strong>SiGLab</strong></span>
+    </a>
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+      <li class="nav-item">
+
+        <a href=""
+          class="nav-link {% if request.path == '/controller/' %} active {% endif %} py-3 border-bottom rounded-0"
+          title="Dashboard">
+          <i class="bi bi-speedometer2" style="font-size: 1.5rem;"></i>
+        </a>
+      </li>
+      <li>
+        <a href=""
+          class="nav-link {% if request.path == '/controller/list_video/' %} active {% endif %} py-3 border-bottom rounded-0"
+          title="Vídeos">
+          <i class="bi bi-camera-video" style="font-size: 1.5rem;"></i>
+        </a>
+      </li>
+      <li>
+        
+    </ul>
+    <div class="dropdown border-top" style="bottom: 0;">
+      <a href="#"
+        class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
+        data-bs-toggle="dropdown" aria-expanded="false" title="{{ user.first_name }}">
+        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+      </a>
+      <ul class="dropdown-menu text-small shadow">
+        <li><a class="dropdown-item" href="">Perfil - {{ user.first_name }}</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="">Sair</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-left: 4.5rem;">
     {% block body %}
-    
-        <!-- Espaço de renderização de páginas -->
+
+    <!-- Espaço de renderização de páginas -->
 
     {% endblock %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
