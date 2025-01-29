@@ -24,12 +24,13 @@
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
       <li class="nav-item">
 
-        <a href=""
-          class="nav-link {% if request.path == '/controller/' %} active {% endif %} py-3 border-bottom rounded-0"
+        <a href="{% url 'dashboard' %}"
+          class="nav-link {% if request.path == '/' %} active {% endif %} py-3 border-bottom rounded-0"
           title="Dashboard">
           <i class="bi bi-speedometer2" style="font-size: 1.5rem;"></i>
         </a>
       </li>
+
       <li>
         <a href=""
           class="nav-link {% if request.path == '/controller/list_video/' %} active {% endif %} py-3 border-bottom rounded-0"
@@ -37,7 +38,14 @@
           <i class="bi bi-camera-video" style="font-size: 1.5rem;"></i>
         </a>
       </li>
+
       <li>
+        <a href="{% url 'list_bolsistas' %}"
+          class="nav-link {% if 'bolsistas' in request.path %} active {% endif %} py-3 border-bottom rounded-0"
+          title="Vídeos">
+          <i class="bi bi-mortarboard" style="font-size: 1.5rem;"></i>
+        </a>
+      </li>
         
     </ul>
     <div class="dropdown border-top" style="bottom: 0;">

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+<div class=" text-center">
+    <div class="card text-start" style="margin: 1rem;">
+        <div class="card-header text-white bg-dark d-flex justify-content-between text-center">
+            <div class="p-2 bd-highlight" style="width: 8rem;"><a href="{% url 'list_bolsistas' %}"
+                    class="btn btn-success btn-sm" title="Voltar"><i class="bi bi-arrow-left-circle"></i></a></div>
+            <div class="p-2 bd-highlight" style="width: 10rem;">Cadastrando Novo Bolsista</div>
+            <div class="p-2 bd-highlight" style="width: 8rem;"></div>
+        </div>
+
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-dadosdeusuario-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-dadosdeusuario" type="button" role="tab" aria-controls="nav-dadosdeusuario"
+                    aria-selected="true">Dados de Usuário</button>
+                <button class="nav-link" id="nav-dadosgerais-tab" data-bs-toggle="tab" data-bs-target="#nav-dadosgerais"
+                    type="button" role="tab" aria-controls="nav-dadosgerais" aria-selected="false">Dados Gerais do
+                    Bolsista</button>
+            </div>
+        </nav>
+        <form action="{% url 'edit_bolsista' id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-dadosdeusuario" role="tabpanel"
+                    aria-labelledby="nav-dadosdeusuario-tab" tabindex="0">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="username" class="form-label">Usuário SIGAA</label> <br>
+                                    <input type="text" name="{{formUser.username.name}}" id="{{formUser.username.id}}" class="form-control" value="{{formUser.username.value}}" readonly>
+                                </div>
+                                <div class="col">
+                                    <label for="Nome" class="form-label">Nome</label> <br>
+                                    {{formUser.first_name}}
+                                </div>
+                                <div class="col">
+                                    <label for="Sobrenome" class="form-label">Sobrenome</label> <br>
+                                    {{formUser.last_name}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            {{formUser.email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-dadosgerais" role="tabpanel" aria-labelledby="nav-dadosgerais-tab"
+                    tabindex="0">
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <label for="matricula" class="form-label">Matricula</label> <br>
+                                {{formBolsista.matricula}}
+                            </div>
+                            <div class="col">
+                                <label for="CPF" class="form-label">CPF</label> <br>
+                                {{formBolsista.cpf}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="curso" class="form-label">Curso</label> <br>
+                                {{formBolsista.curso}}
+                            </div>
+                            <div class="col">
+                                <label for="grauEscolar" class="form-label">Grau escolar</label> <br>
+                                {{formBolsista.grauEscolar}}
+                            </div>
+                            <div class="col">
+                                <label for="tipoDeBolsa" class="form-label">Tipo de Bolsa</label> <br>
+                                {{formBolsista.tipoDeBolsa}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mb-3" style="margin: 1rem;">
+                <hr>
+                <button type="submit" class="btn btn-sm btn-dark"><i class="bi bi-floppy"></i> Salvar
+                    Alterações</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+{% endblock %}

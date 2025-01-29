@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="card" style="margin: 1rem;">
+    <div class="card-header text-center">
+        <h6>Horários Semanais</h6>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-end">
+            <a href="{% url 'list_horarios' id %}" class="btn btn-sm btn-dark " style="margin: 0.5rem;"
+                title="Adicionar horário"><i class="bi bi-plus-circle"></i> Horário</a>
+        </div>
+        <div class="containe\r mt-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center align-middle" style="width: 10rem;">Horário/Dia</th>
+                        <th scope="col" class="text-center">Segunda</th>
+                        <th scope="col" class="text-center">Terça</th>
+                        <th scope="col" class="text-center">Quarta</th>
+                        <th scope="col" class="text-center">Quinta</th>
+                        <th scope="col" class="text-center">Sexta</th>
+                        <th scope="col" class="text-center">Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" class="text-center" >M1: 7:00 - 7:50</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">M2: 7:50 - 8:40</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">M3: 8:50 - 9:40</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">M4: 9:40 - 10:30</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">M5: 10:40 - 11:30</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">M6: 11:30 - 12:20</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">AM: 12:00 - 12:50</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">T1: 13:00 - 13:50</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">T2: 13:50 - 14:40</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">T3: 14:50 - 15:40</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">T4: 15:40 - 16:30</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">T5: 16:40 - 17:30</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">T6: 17:30 - 18:20</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">N1: 18:40 - 19:30</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">N2: 19:30 - 20:20</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">N3: 20:30 - 21:20</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center">N4: 21:20 - 22:10</th>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                        <td class="text-center"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="card" style="margin: 1rem;">
+        <div class="card-header text-center">
+            <h6>Lista de bolsistas cadastrados</h6>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'add_bolsista' %}" class="btn btn-sm btn-dark " style="margin: 0.5rem;"
+                    title="Adicionar novo bolsista"><i class="bi bi-plus-circle"></i></a>
+            </div>
+            {% if bolsistas %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for bolsista in bolsistas %}
+                    <tr class="text-center">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{bolsista.user.get_full_name}}</td>
+                        <td>{{bolsista.user.username}}</td>
+                        <td>{{bolsista.user.email}}</td>
+                        <td style="max-width: 5rem;">
+                            <a href="{% url 'view_horario' bolsista.id %}" class="btn btn-sm btn-primary" title="Horários"><i class="bi bi-calendar-event"></i></a>
+                            <a href="{% url 'edit_bolsista' bolsista.id %}" class="btn btn-sm btn-warning" title="Editar"><i class="bi bi-pencil"></i></a>
+                            <button type="button" class="btn btn-sm btn-danger " data-bs-toggle="modal"
+                                data-bs-target="#modalDelete{{bolsista.id}}" title="Excluir">
+                                <!-- Colocar id no data-bs-target -->
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                            <!-- MODAL -->
+                            <div class="modal fade" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"
+                                id="modalDelete{{bolsista.id}}"> <!-- Colocar id no data-bs-target -->
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content rounded-3 shadow">
+                                        <div class="modal-body p-4 text-center">
+                                            <h5 class="mb-0">Você quer mesmo deletar esse bolsista?</h5>
+                                            <p class="mb-0">Ao deletar o mesmo todas informações referêntes a ele não
+                                                existiram mais</p>
+                                        </div>
+                                        <div class="modal-footer flex-nowrap p-0">
+                                            <a href="{% url 'remove_bolsista' bolsista.user.id %}"
+                                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Sim,
+                                                    quero deletar</strong></a>
+                                            <button type="button"
+                                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FIM MODAL -->
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+            {% else %}
+            <tr>
+                <td>
+                    <p class="text-danger text-center">
+                        Não há bolsistas cadastrados ainda!
+                    </p>
+                </td>
+            </tr>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
