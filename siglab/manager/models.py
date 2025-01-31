@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Bolsista(models.Model):
     GraisEscolares = [
-        ('None', 'Selecionar'),
+        ('', 'Selecionar'),
         ('TIM', 'Técnico Integrado ao Médio'), 
         ('TS', 'Técnico Subsequente'),
         ('ES', 'Ensino Superior'),
@@ -14,7 +14,7 @@ class Bolsista(models.Model):
     ]
 
     TiposBolsa = [
-        ('None', 'Selecionar'),
+        ('', 'Selecionar'),
         ('VLT', 'Voluntária - 10h'),
         ('RMN1', 'Remunerada - 12h a 20h'),
         ('RMN2', 'Remunerada - 30h'),
@@ -29,40 +29,40 @@ class Bolsista(models.Model):
 
 class Horario(models.Model):
     DIAS_SEMANA = [
-        ('None', 'Selecionar'),
-        ('seg', 'Segunda'),
-        ('ter', 'Terça'),
-        ('qua', 'Quarta'),
-        ('qui', 'Quinta'),
-        ('sex', 'Sexta'),
-        ('sab', 'Sábado'),
+        ('', 'Selecionar'),
+        ('Segunda', 'Segunda'),
+        ('Terça', 'Terça'),
+        ('Quarta', 'Quarta'),
+        ('Quinta', 'Quinta'),
+        ('Sexta', 'Sexta'),
+        ('Sábado', 'Sábado'),
     ]
 
     HORARIOS = [
-        ('None', 'Selecionar'),
-        ('m1', 'M1: 7:00 - 7:50'),
-        ('m2', 'M2: 7:50 - 8:40'),
-        ('m3', 'M3: 8:50 - 9:40'),
-        ('m4', 'M4: 9:40 - 10:30'),
-        ('m5', 'M5: 10:40 - 11:30'),
-        ('m6', 'M6: 11:30 - 12:20'),
-        ('am', 'AM: 12:00 - 12:50'),
-        ('t1', 'T1: 13:00 - 13:50'),
-        ('t2', 'T2: 13:50 - 14:40'),
-        ('t3', 'T3: 14:50 - 15:40'),
-        ('t4', 'T4: 15:40 - 16:30'),
-        ('t5', 'T5: 16:40 - 17:30'),
-        ('t6', 'T6: 17:30 - 18:20'),
-        ('n1', 'N1: 18:40 - 19:30'),
-        ('n2', 'N2: 19:30 - 20:20'),
-        ('n3', 'N3: 20:30 - 21:20'),
-        ('n4', 'N4: 21:20 - 22:10'),
+        ('', 'Selecionar'),
+        ('M1: 7:00 - 7:50', 'M1: 7:00 - 7:50'),
+        ('M2: 7:50 - 8:40', 'M2: 7:50 - 8:40'),
+        ('M3: 8:50 - 9:40', 'M3: 8:50 - 9:40'),
+        ('M4: 9:40 - 10:30', 'M4: 9:40 - 10:30'),
+        ('M5: 10:40 - 11:30', 'M5: 10:40 - 11:30'),
+        ('M6: 11:30 - 12:20', 'M6: 11:30 - 12:20'),
+        ('Almoço: 12:00 - 12:50', 'Almoço: 12:00 - 12:50'),
+        ('T1: 13:00 - 13:50', 'T1: 13:00 - 13:50'),
+        ('T2: 13:50 - 14:40', 'T2: 13:50 - 14:40'),
+        ('T3: 14:50 - 15:40', 'T3: 14:50 - 15:40'),
+        ('T4: 15:40 - 16:30', 'T4: 15:40 - 16:30'),
+        ('T5: 16:40 - 17:30', 'T5: 16:40 - 17:30'),
+        ('T6: 17:30 - 18:20', 'T6: 17:30 - 18:20'),
+        ('N1: 18:40 - 19:30', 'N1: 18:40 - 19:30'),
+        ('N2: 19:30 - 20:20', 'N2: 19:30 - 20:20'),
+        ('N3: 20:30 - 21:20', 'N3: 20:30 - 21:20'),
+        ('N4: 21:20 - 22:10', 'N4: 21:20 - 22:10')
     ]
 
     bolsista = models.ForeignKey(Bolsista, on_delete=models.CASCADE, related_name="bolsista_horario")
     diaSemana = models.CharField(max_length=255, default="", choices=DIAS_SEMANA)
     horarioInicio = models.CharField(max_length=255, default="", choices=HORARIOS)
-    horarioFim = models.TimeField(max_length=255, default="", choices=HORARIOS)
+    horarioFim = models.CharField(max_length=255, default="", choices=HORARIOS)
 
 class Presenca(models.Model):
     bolsista = models.ForeignKey(Bolsista, on_delete=models.CASCADE, related_name="bolsista_presenca")

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import dashboard, list_bolsistas, add_bolsista, edit_bolsista, remove_bolsista, view_horario, list_horarios, add_horario
+from .views import dashboard, list_bolsistas, add_bolsista, edit_bolsista, remove_bolsista, view_horario, list_horarios, add_horario, edit_horario, remove_horario
 
 urlpatterns = [
     path('', dashboard, name='dashboard'),
@@ -11,5 +11,7 @@ urlpatterns = [
 
     path('bolsistas/horarios/view/<int:id>/', view_horario, name='view_horario'),
     path('bolsistas/horarios/<int:id>/', list_horarios, name='list_horarios'),
-    path('bolsistas/horarios/adicionar/<int:id>/', add_horario, name='add_horario')
+    path('bolsistas/horarios/adicionar/<int:id>/', add_horario, name='add_horario'),
+    path('bolsistas/horarios/editar/<int:id>/', edit_horario, name='edit_horario'),
+    path('bolsistas/horarios/remover/<int:id>/', remove_horario, name='remove_horario'),
 ]

@@ -2,6 +2,95 @@
 
 {% block body %}
 
-    <h1>Olá, Mundo!!</h1>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="card" style="margin: 1rem;">
+        <div class="card-header text-center d-flex justify-content-between text-center">
+            <div class="p-2 bd-highlight" style="width: 8rem;"><a href="{% url 'view_horario' id %}"
+                class="btn btn-success btn-sm" title="Voltar"><i class="bi bi-arrow-left-circle"></i></a></div>
+            <h6>Lista de horários de {{bolsista.user.first_name}}</h6>
+            <div class="p-2 bd-highlight" style="width: 8rem;"></div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'add_horario' id %}" class="btn btn-sm btn-dark " style="margin: 0.5rem;"
+                    title="Adicionar novo horário"><i class="bi bi-plus-circle"></i> Novo Horário</a>
+            </div>
+            {% if horarios %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">Dia da Semana</th>
+                        <th scope="col">Horário Inicio</th>
+                        <th scope="col">Horário Fim</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for horario in horarios %}
+                    <tr class="text-center">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{horario.diaSemana}}</td>
+                        <td>{{horario.horarioInicio}}</td>
+                        <td>{{horario.horarioFim}}</td>
+                        <td style="max-width: 5rem;">
+                            <a href="{% url 'edit_horario' horario.id %}" class="btn btn-sm btn-warning"
+                                title="Editar"><i class="bi bi-pencil"></i></a>
+                            <button type="button" class="btn btn-sm btn-danger " data-bs-toggle="modal"
+                                data-bs-target="#modalDelete{{horario.id}}" title="Excluir">
+                                <!-- Colocar id no data-bs-target -->
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                            <!-- MODAL -->
+                            <div class="modal fade" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"
+                                id="modalDelete{{horario.id}}"> <!-- Colocar id no data-bs-target -->
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content rounded-3 shadow">
+                                        <div class="modal-body p-4 text-center">
+                                            <h5 class="mb-0">Você quer mesmo deletar esse horário?</h5>
+                                            <p class="mb-0">Ao deletar o mesmo todas informações referêntes a ele não
+                                                existirão mais</p>
+                                        </div>
+                                        <div class="modal-footer flex-nowrap p-0">
+                                            <a href="{% url 'remove_horario' horario.id %}"
+                                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Sim,
+                                                    quero deletar</strong></a>
+                                            <button type="button"
+                                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FIM MODAL -->
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+            {% else %}
+            <tr>
+                <td>
+                    <p class="text-danger text-center">
+                        Não há horários cadastrados para <strong>{{bolsista.user.first_name}}</strong> ainda.
+                    </p>
+                </td>
+            </tr>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
