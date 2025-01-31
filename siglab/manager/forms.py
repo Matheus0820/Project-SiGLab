@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
 from django.contrib.auth.models import User
-from .models import Bolsista
+from .models import Bolsista, HorarioBolsista
 
 class FormUser(UserCreationForm):
     class Meta:
@@ -44,7 +44,17 @@ class FormBolsista(forms.ModelForm):
             'matricula': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Matrícula'}),
             'cpf': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'CPF', 'onfocus': 'formatarCPF(this.id)'}),
             'curso': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Curso'}),
-            'grauEscolar': forms.Select(attrs={'class': 'form-control'}), 
-            'tipoDeBolsa': forms.Select(attrs={'class': 'form-control'}),
+            'grauEscolar': forms.Select(attrs={'class': 'form-control', 'requirid': 'required'}), 
+            'tipoDeBolsa': forms.Select(attrs={'class': 'form-control', 'requirid': 'required'}),
+        }
+
+class FormHorario(forms.ModelForm):
+    class Meta:
+        model = HorarioBolsista
+        fields = ('diaSemana', 'horarioInicio', 'horarioFim',)
+        widgets = {
+            'diaSemana': forms.Select(attrs={'class': 'form-control', 'requirid': 'required'}),
+            'horarioInicio': forms.Select(attrs={'class': 'form-control', 'requirid': 'required'}),
+            'horarioFim': forms.Select(attrs={'class': 'form-control', 'requirid': 'required'}), 
         }
 
