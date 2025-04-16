@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from .views import dashboard, list_bolsistas, add_bolsista, edit_bolsista, remove_bolsista, view_horario, list_horarios, add_horario, edit_horario, remove_horario, login
+=======
+from .views import dashboard, list_bolsistas, add_bolsista, edit_bolsista, remove_bolsista, view_horario, list_horarios, add_horario, edit_horario, remove_horario
+>>>>>>> 9b7947e1b71b797467139ec8189b18826e79fb23
 
 urlpatterns = [
     path('', dashboard, name='dashboard'),
