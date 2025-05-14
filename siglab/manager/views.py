@@ -110,7 +110,7 @@ def remove_bolsista(request, id):
 
 def view_horario(request, id):
     bolsista = Bolsista.objects.get(id=id)
-    horarios = Horario.objects.filter(bolsista=bolsista).order_by('diaSemana', 'horarioInicio')
+    horarios = HorarioBolsista.objects.filter(bolsista=bolsista).order_by('diaSemana', 'horarioInicio')
 
     context = {
         'horarios': horarios, 
@@ -121,7 +121,7 @@ def view_horario(request, id):
 
 def list_horarios(request, id):
     bolsista = Bolsista.objects.get(id=id)
-    horarios = Horario.objects.filter(bolsista=bolsista).order_by('diaSemana', 'horarioInicio')
+    horarios = HorarioBolsista.objects.filter(bolsista=bolsista).order_by('diaSemana', 'horarioInicio')
 
     context = {
         'horarios': horarios, 
@@ -145,7 +145,6 @@ def add_horario(request, id):
     elif request.method == 'POST':
         form = FormHorario(request.POST)
 
-<<<<<<< HEAD
         context = {
             'form': form,
             'id': id,
@@ -154,7 +153,7 @@ def add_horario(request, id):
 
         horario = form.save(commit=False)
         # Verificação de duplicação
-        horarios_Cadastrados = Horario.objects.filter(bolsista=bolsista)
+        horarios_Cadastrados = HorarioBolsista.objects.filter(bolsista=bolsista)
         horarios_Cadastrados = horarios_Cadastrados.filter(diaSemana=horario.diaSemana)
 
         if horarios_Cadastrados != None:
@@ -173,18 +172,9 @@ def add_horario(request, id):
                 messages.success(request, 'Horário adicionado com sucesso.')
                 list_horarios_url = reverse('list_horarios', args=[id])
                 return redirect(list_horarios_url)        
-=======
-        horario = form.save(commit=False)
-        horario.bolsista = bolsista
-        horario.save()
-
-        messages.success(request, 'Horário adicionado com sucesso.')
-        list_horarios_url = reverse('list_horarios', args=[id])
-        return redirect(list_horarios_url)        
->>>>>>> 9b7947e1b71b797467139ec8189b18826e79fb23
 
 def edit_horario(request, id):
-    horario = Horario.objects.get(id=id)
+    horario = HorarioBolsista.objects.get(id=id)
     if request.method == 'GET':
         form = FormHorario(instance= horario)
 
@@ -218,7 +208,7 @@ def edit_horario(request, id):
             
 
 def remove_horario(request, id):
-    horario = Horario.objects.get(id=id)
+    horario = HorarioBolsista.objects.get(id=id)
     bolsista_id = horario.bolsista.id
 
     list_horarios_url = reverse('list_horarios', args=[bolsista_id])
