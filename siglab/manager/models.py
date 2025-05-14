@@ -86,12 +86,9 @@ class HorarioBolsista(models.Model):
     diaSemana = models.CharField(max_length=255, default="", choices=DIAS_SEMANA)
     horarioInicio = models.CharField(max_length=255, default="", choices=HORARIOS)
     horarioFim = models.CharField(max_length=255, default="", choices=HORARIOS)
-<<<<<<< HEAD
 
     def __str__(self):
         return self.bolsista
-=======
->>>>>>> 9b7947e1b71b797467139ec8189b18826e79fb23
 
 class Presenca(models.Model):
     bolsista = models.ForeignKey(Bolsista, on_delete=models.CASCADE, related_name="bolsista_presenca")
